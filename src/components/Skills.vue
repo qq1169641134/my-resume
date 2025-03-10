@@ -5,34 +5,20 @@
       <div v-for="skill in skills" :key="skill.name" class="skill-item">
         <div class="skill-header">
           <span class="skill-name">{{ skill.name }}</span>
-          <span class="skill-level">{{ skill.level }}%</span>
+          <span class="skill-level">{{ skill.level }}</span>
         </div>
-        <el-progress 
-          :percentage="skill.level" 
-          :show-text="false"
-          :stroke-width="10"
-          :color="getColorForLevel(skill.level)"
-        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ElProgress } from 'element-plus'
 const props = defineProps({
   skills: {
     type: Array,
     required: true
   }
 })
-
-const getColorForLevel = (level) => {
-  if (level >= 90) return '#67c23a'
-  if (level >= 75) return '#409eff'
-  if (level >= 60) return '#e6a23c'
-  return '#f56c6c'
-}
 </script>
 
 <style scoped lang="scss">
@@ -49,7 +35,7 @@ const getColorForLevel = (level) => {
 .skill-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5px;
+  align-items: center;
 }
 
 .skill-name {
@@ -59,4 +45,4 @@ const getColorForLevel = (level) => {
 .skill-level {
   color: var(--primary-color);
 }
-</style> 
+</style>
